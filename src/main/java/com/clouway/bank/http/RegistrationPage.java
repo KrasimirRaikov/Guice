@@ -1,6 +1,8 @@
 package com.clouway.bank.http;
 
 import com.clouway.utility.Template;
+import com.google.inject.Inject;
+import com.google.inject.Singleton;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
@@ -12,9 +14,11 @@ import java.io.PrintWriter;
 /**
  * @author Krasimir Raikov(raikov.krasimir@gmail.com)
  */
+@Singleton
 public class RegistrationPage extends HttpServlet {
   private Template template;
 
+  @Inject
   public RegistrationPage(Template template) {
     this.template = template;
   }

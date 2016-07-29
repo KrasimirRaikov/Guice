@@ -5,6 +5,7 @@ import com.clouway.bank.core.RowFetcher;
 import com.clouway.bank.core.User;
 import com.clouway.bank.core.UserRepository;
 import com.clouway.bank.core.ValidationException;
+import com.google.inject.Inject;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -15,6 +16,7 @@ import java.util.List;
 public class PersistentUserRepository implements UserRepository {
   private DataStore dataStore;
 
+  @Inject
   public PersistentUserRepository(DataStore dataStore) {
     this.dataStore = dataStore;
   }

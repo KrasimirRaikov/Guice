@@ -5,6 +5,8 @@ import com.clouway.bank.core.User;
 import com.clouway.bank.core.UserRepository;
 import com.clouway.bank.core.UserValidator;
 import com.clouway.bank.core.ValidationException;
+import com.google.inject.Inject;
+import com.google.inject.Singleton;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
@@ -15,12 +17,13 @@ import java.io.IOException;
 /**
  * @author Krasimir Raikov(raikov.krasimir@gmail.com)
  */
+@Singleton
 public class RegistrationController extends HttpServlet {
   private UserRepository userRepository;
   private AccountRepository accountRepository;
   private UserValidator validator;
 
-
+  @Inject
   public RegistrationController(UserRepository userRepository, AccountRepository accountRepository, UserValidator validator) {
     this.userRepository = userRepository;
     this.accountRepository = accountRepository;

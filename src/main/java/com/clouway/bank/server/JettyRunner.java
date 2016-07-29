@@ -22,7 +22,7 @@ public class JettyRunner {
   public static void main(String[] args) {
     ConnectionManager connectionManager = new ConnectionManager("bank", "root", "clouway.com");
     SessionCleaner sessionCleaner = new SessionCleaner(new BankTimeCalendar(Calendar.getInstance(), 5), 10, connectionManager);
-    Jetty jetty = new Jetty(8080, "bank");
+    Jetty jetty = new Jetty(8080);
     sessionCleaner.clearDeadSessions();
     jetty.start();
 

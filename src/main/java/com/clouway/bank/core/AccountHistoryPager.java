@@ -1,5 +1,8 @@
 package com.clouway.bank.core;
 
+import com.google.inject.Inject;
+import com.google.inject.name.Named;
+
 import java.util.List;
 
 /**
@@ -12,7 +15,8 @@ public class AccountHistoryPager implements AccountPager {
   private int previousPage;
   private int nextPage;
 
-  public AccountHistoryPager(int pageSize, AccountHistoryRepository historyRepository) {
+  @Inject
+  public AccountHistoryPager(@Named("pageSize") int pageSize, AccountHistoryRepository historyRepository) {
     this.pageSize = pageSize;
     this.historyRepository = historyRepository;
     currentPage = 0;

@@ -6,9 +6,10 @@ import com.clouway.bank.core.SessionRepository;
 import com.clouway.bank.core.User;
 import com.clouway.bank.core.UserRepository;
 import com.clouway.bank.core.UserValidator;
+import com.google.inject.Inject;
+import com.google.inject.Singleton;
 
 import javax.servlet.ServletException;
-import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -19,13 +20,14 @@ import java.util.UUID;
 /**
  * @author Krasimir Raikov(raikov.krasimir@gmail.com)
  */
-@WebServlet(name = "LoginController")
+@Singleton
 public class LoginController extends HttpServlet {
   private final UserRepository userRepository;
   private final UserValidator userValidator;
   private SessionRepository sessionRepository;
   private BankCalendar calendar;
 
+  @Inject
   public LoginController(SessionRepository sessionRepository, UserRepository userRepository, UserValidator userValidator, BankCalendar calendar) {
 
     this.sessionRepository = sessionRepository;

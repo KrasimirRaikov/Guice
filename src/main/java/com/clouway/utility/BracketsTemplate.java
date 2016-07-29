@@ -1,5 +1,7 @@
 package com.clouway.utility;
 
+import com.google.inject.Inject;
+
 import java.util.LinkedHashMap;
 import java.util.Map;
 
@@ -14,6 +16,7 @@ public class BracketsTemplate implements Template {
   private String template;
   private Reader reader;
 
+  @Inject
   public BracketsTemplate(Reader reader) {
     this.reader = reader;
   }

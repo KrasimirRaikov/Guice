@@ -1,5 +1,8 @@
 package com.clouway.utility;
 
+import com.google.inject.Inject;
+import com.google.inject.name.Named;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -10,7 +13,8 @@ public class HtmlTableBuilder implements TableBuilder {
   private final String tableClass;
   List<RowBuilder> rows = new ArrayList<>();
 
-  public HtmlTableBuilder(String tableClass) {
+  @Inject
+  public HtmlTableBuilder(@Named("bootstrapTablesClass") String tableClass) {
     this.tableClass = tableClass;
   }
 

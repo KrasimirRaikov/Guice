@@ -1,6 +1,8 @@
 package com.clouway.bank.http;
 
 import com.clouway.utility.Template;
+import com.google.inject.Inject;
+import com.google.inject.Singleton;
 
 import javax.servlet.Filter;
 import javax.servlet.FilterChain;
@@ -15,6 +17,7 @@ import java.io.IOException;
  *
  * @author Krasimir Raikov(raikov.krasimir@gmail.com)
  */
+@Singleton
 public class HttprequestErrorReporter implements Filter {
   private Template template;
 
@@ -23,6 +26,7 @@ public class HttprequestErrorReporter implements Filter {
    *
    * @param template
    */
+  @Inject
   public HttprequestErrorReporter(Template template) {
     this.template = template;
   }

@@ -1,9 +1,10 @@
 package com.clouway.bank.http;
 
 import com.clouway.utility.Template;
+import com.google.inject.Inject;
+import com.google.inject.Singleton;
 
 import javax.servlet.ServletException;
-import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -13,11 +14,12 @@ import java.io.PrintWriter;
 /**
  * @author Krasimir Raikov(raikov.krasimir@gmail.com)
  */
-@WebServlet(name = "LoginPage")
+@Singleton
 public class LoginPage extends HttpServlet {
 
   private Template template;
 
+  @Inject
   public LoginPage(Template template) {
     this.template = template;
   }

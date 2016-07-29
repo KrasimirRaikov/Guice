@@ -4,6 +4,7 @@ import com.clouway.bank.core.AccountHistoryRepository;
 import com.clouway.bank.core.AccountRecord;
 import com.clouway.bank.core.DataStore;
 import com.clouway.bank.core.RowFetcher;
+import com.google.inject.Inject;
 
 import java.math.BigDecimal;
 import java.math.RoundingMode;
@@ -15,6 +16,7 @@ import java.util.List;
 public class PersistentAccountHistoryRepository implements AccountHistoryRepository {
   private DataStore dataStore;
 
+  @Inject
   public PersistentAccountHistoryRepository(DataStore dataStore) {
     this.dataStore = dataStore;
   }

@@ -6,9 +6,10 @@ import com.clouway.bank.core.SessionProvider;
 import com.clouway.utility.HtmlTableCell;
 import com.clouway.utility.TableBuilder;
 import com.clouway.utility.Template;
+import com.google.inject.Inject;
+import com.google.inject.Singleton;
 
 import javax.servlet.ServletException;
-import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -20,13 +21,14 @@ import java.util.List;
 /**
  * @author Krasimir Raikov(raikov.krasimir@gmail.com)
  */
-@WebServlet(name = "AccountHistoryPage")
+@Singleton
 public class AccountHistoryPage extends HttpServlet {
   private Template template;
   private TableBuilder tableBuilder;
   private AccountPager accountPager;
   private SessionProvider sessionProvider;
 
+  @Inject
   public AccountHistoryPage(Template template, TableBuilder tableBuilder, AccountPager accountPager, SessionProvider sessionProvider) {
     this.template = template;
     this.tableBuilder = tableBuilder;

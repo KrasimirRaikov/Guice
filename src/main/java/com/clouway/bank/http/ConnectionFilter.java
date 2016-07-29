@@ -1,5 +1,7 @@
 package com.clouway.bank.http;
 
+import com.google.inject.Inject;
+import com.google.inject.Singleton;
 import com.mysql.cj.jdbc.MysqlConnectionPoolDataSource;
 
 import javax.servlet.Filter;
@@ -8,7 +10,6 @@ import javax.servlet.FilterConfig;
 import javax.servlet.ServletException;
 import javax.servlet.ServletRequest;
 import javax.servlet.ServletResponse;
-import javax.servlet.annotation.WebFilter;
 import java.io.IOException;
 import java.sql.Connection;
 import java.sql.SQLException;
@@ -18,20 +19,10 @@ import java.sql.SQLException;
  *
  * @author Krasimir Raikov(raikov.krasimir@gmail.com)
  */
-@WebFilter(filterName = "ConnectionFilter")
+@Singleton
 public class ConnectionFilter implements Filter {
   private static ThreadLocal<Connection> connections = new ThreadLocal<Connection>();
   private MysqlConnectionPoolDataSource connectionPool;
-  private String dbName;
-
-  /**
-   * Constructor setting up the database name
-   *
-   * @param dbName
-   */
-  public ConnectionFilter(String dbName) {
-    this.dbName = dbName;
-  }
 
   /**
    * Gives the connection for the database
@@ -79,7 +70,7 @@ public class ConnectionFilter implements Filter {
    */
   public void init(FilterConfig config) throws ServletException {
     connectionPool = new MysqlConnectionPoolDataSource();
-    connectionPool.setURL("jdbc:mysql://localhost:3306/" + dbName + "?useUnicode=true&useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&serverTimezone=UTC");
+    connectionPool.setURL("jdbc:mysql://localhost:3306/bank?useUnicode=true&useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&serverTimezone=UTC");
     connectionPool.setUser("root");
     connectionPool.setPassword("clouway.com");
 

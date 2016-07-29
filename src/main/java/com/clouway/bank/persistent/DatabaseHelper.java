@@ -3,6 +3,7 @@ package com.clouway.bank.persistent;
 import com.clouway.bank.core.ConnectionProvider;
 import com.clouway.bank.core.DataStore;
 import com.clouway.bank.core.RowFetcher;
+import com.google.inject.Inject;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -17,6 +18,7 @@ import java.util.List;
 public class DatabaseHelper implements DataStore {
   private ConnectionProvider connectionProvider;
 
+  @Inject
   public DatabaseHelper(ConnectionProvider connectionProvider) {
     this.connectionProvider = connectionProvider;
   }

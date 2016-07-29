@@ -4,6 +4,7 @@ import com.clouway.bank.core.DataStore;
 import com.clouway.bank.core.RowFetcher;
 import com.clouway.bank.core.Session;
 import com.clouway.bank.core.SessionRepository;
+import com.google.inject.Inject;
 
 import java.sql.Timestamp;
 import java.util.ArrayList;
@@ -17,6 +18,7 @@ import java.util.List;
 public class PersistentSessionRepository implements SessionRepository {
   private DataStore dataStore;
 
+  @Inject
   public PersistentSessionRepository(DataStore dataStore) {
     this.dataStore = dataStore;
   }

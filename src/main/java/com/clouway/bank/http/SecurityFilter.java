@@ -4,6 +4,9 @@ import com.clouway.bank.core.BankCalendar;
 import com.clouway.bank.core.Session;
 import com.clouway.bank.core.SessionProvider;
 import com.clouway.bank.core.SessionRepository;
+import com.google.inject.Inject;
+import com.google.inject.Singleton;
+import com.google.inject.name.Named;
 
 import javax.servlet.Filter;
 import javax.servlet.FilterChain;
@@ -21,13 +24,15 @@ import java.util.Optional;
 /**
  * @author Krasimir Raikov(raikov.krasimir@gmail.com)
  */
+@Singleton
 public class SecurityFilter implements Filter {
   private SessionRepository sessionRepository;
   private BankCalendar bankCalendar;
   private List<String> unsecuredPages;
   private SessionProvider sessionProvider;
 
-  public SecurityFilter(SessionRepository sessionRepository, BankCalendar bankCalendar, List<String> unsecuredPages, SessionProvider sessionProvider) {
+  @Inject
+  public SecurityFilter(SessionRepository sessionRepository, BankCalendar bankCalendar,List<String> unsecuredPages, SessionProvider sessionProvider) {
     this.sessionRepository = sessionRepository;
     this.bankCalendar = bankCalendar;
     this.unsecuredPages = unsecuredPages;

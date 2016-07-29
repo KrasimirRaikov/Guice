@@ -6,6 +6,8 @@ import com.clouway.bank.core.SessionProvider;
 import com.clouway.bank.core.TransactionValidator;
 import com.clouway.bank.core.ValidationException;
 import com.clouway.utility.Template;
+import com.google.inject.Inject;
+import com.google.inject.Singleton;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
@@ -17,12 +19,14 @@ import java.io.PrintWriter;
 /**
  * @author Krasimir Raikov(raikov.krasimir@gmail.com)
  */
+@Singleton
 public class WithdrawServlet extends HttpServlet {
   private final AccountRepository accountRepository;
   private final Template template;
   private TransactionValidator validator;
   private SessionProvider sessionProvider;
 
+  @Inject
   public WithdrawServlet(AccountRepository accountRepository, Template template, TransactionValidator validator, SessionProvider sessionProvider) {
     this.accountRepository = accountRepository;
     this.template = template;

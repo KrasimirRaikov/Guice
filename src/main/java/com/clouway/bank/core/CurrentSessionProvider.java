@@ -1,8 +1,11 @@
 package com.clouway.bank.core;
 
+import com.google.inject.Singleton;
+
 /**
  * @author Krasimir Raikov(raikov.krasimir@gmail.com)
  */
+@Singleton
 public class CurrentSessionProvider implements SessionProvider {
   private Session session;
 

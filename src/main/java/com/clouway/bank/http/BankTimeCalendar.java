@@ -1,6 +1,8 @@
 package com.clouway.bank.http;
 
 import com.clouway.bank.core.BankCalendar;
+import com.google.inject.Inject;
+import com.google.inject.name.Named;
 
 import java.util.Calendar;
 import java.util.Date;
@@ -15,7 +17,8 @@ public class BankTimeCalendar implements BankCalendar {
   private Calendar calendar;
   private int delayInMinutes;
 
-  public BankTimeCalendar(Calendar calendar, int delayInMinutes) {
+  @Inject
+  public BankTimeCalendar(Calendar calendar, @Named("sessionLiveLengthInMinutes") int delayInMinutes) {
     this.calendar = calendar;
     this.delayInMinutes = delayInMinutes;
   }

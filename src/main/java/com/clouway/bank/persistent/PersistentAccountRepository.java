@@ -6,6 +6,7 @@ import com.clouway.bank.core.DataStore;
 import com.clouway.bank.core.RowFetcher;
 import com.clouway.bank.core.UserException;
 import com.clouway.bank.core.ValidationException;
+import com.google.inject.Inject;
 
 /**
  * Account data storing
@@ -15,6 +16,7 @@ import com.clouway.bank.core.ValidationException;
 public class PersistentAccountRepository implements AccountRepository {
   private DataStore dataStore;
 
+  @Inject
   public PersistentAccountRepository(DataStore dataStore) {
     this.dataStore = dataStore;
   }
